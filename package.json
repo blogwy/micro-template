@@ -1,7 +1,9 @@
 {
-  "name": "aiot-micro-template",
+  "name": "{{projectName}}",
   "version": "1.0.0",
   "private": true,
+  "author": "{{projectAuthor}}",
+  "description": "{{projectDescription}}",
   "scripts": {
     "dev": "vue-cli-service serve --mode development",
     "build:dev": "cross-env NODE_ENV=production vue-cli-service build --mode dev",
