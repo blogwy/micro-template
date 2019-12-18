@@ -40,14 +40,5 @@
     "single-spa-asset-webpack-plugin": "^1.0.3",
     "vue-cli-plugin-single-spa": "^1.1.0",
     "vue-template-compiler": "^2.6.10"
-  },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,vue}": [
-      "vue-cli-service lint",
-      "git add"
-    ]
   }
 }
