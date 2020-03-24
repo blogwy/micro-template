@@ -8,6 +8,7 @@ import moment from 'moment'
 
 import antd from 'ant-design-vue'
 import 'ant-design-vue/dist/antd.css'
+import './assets/style/main.less'
 
 import apiRegister from './config/api/api-rehister'
 

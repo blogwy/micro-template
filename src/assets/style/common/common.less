@@ -1,0 +1,198 @@
+@import './flex.less';
+
+.fr {
+  .flex();
+  .flex-dir(row);
+}
+
+.fc {
+  .flex();
+  .flex-dir(column);
+}
+
+.fg1 {
+  flex-grow: 1;
+}
+
+.ac {
+  .flex-align(center);
+}
+
+.jc {
+  .flex-just(center);
+}
+
+.jsb {
+  .flex-just(space-between);
+}
+
+.jsa {
+  .flex-just(space-around);
+}
+
+.jsd {
+  .flex-just(flex-end);
+}
+
+.pd24 {
+  padding: 1.5rem !important;
+}
+
+.mb24 {
+  margin-bottom: 24px;
+}
+
+.mr8 {
+  margin-right: 8px;
+}
+
+.ant-form-item {
+  margin-bottom: 16px;
+}
+
+.styleWd {
+  width: 160px;
+}
+.dark-row {
+  background: #FCFCFC;
+}
+
+.dot {
+  width        : 6px;
+  height       : 6px;
+  margin-right : 6px;
+  border-radius: 50%;
+  margin       : auto 6px auto 0;
+
+  &.err {
+    background-color: #FF8888;
+  }
+
+  &.warn {
+    background-color: #fee325;
+  }
+
+  &.win {
+    background-color: #5fdcc0;
+  }
+}
+
+.ant-drawer-wrapper-body {
+  display       : flex;
+  flex-direction: column;
+}
+
+.ant-drawer-body {
+  padding-bottom: 182px !important;
+  overflow      : auto;
+}
+
+.drawer-bar {
+  position        : absolute;
+  z-index         : 2;
+  left            : 0px;
+  bottom          : 0px;
+  width           : 100%;
+  background-color: #FFF;
+  border-top      : 1px solid rgb(233, 233, 233);
+  padding         : 24px 32px;
+  text-align      : right;
+
+  &> :first-child {
+    margin-right: 24px;
+  }
+
+  &> :last-child {
+    margin-right: 0 !important;
+  }
+}
+
+
+.container {
+  min-height    : calc(100% - 20px - 48px); // 容器高度 = 内容高度 - 面包屑高度 - padding/margin
+  font-size     : 14px;
+  padding-bottom: 68px;
+  position      : relative;
+
+  .handle-bar {
+    font-size: 14px;
+
+    &.mb {
+      margin-bottom: 24px;
+    }
+
+    >*:not(:last-child) {
+      margin-right: 24px;
+    }
+
+    >button:not(:last-child) {
+      margin-right: 16px;
+    }
+
+    .styleWidth {
+      width: 160px;
+    }
+  }
+
+  .category-bar {
+    margin-bottom: 24px;
+
+    >* {
+      font-size  : 16px;
+      font-family: PingFangSC-Medium;
+      font-weight: 500;
+      color      : rgba(41, 58, 77, 0.65);
+      cursor     : pointer;
+    }
+
+    >*:not(:last-child) {
+      margin-right: 32px;
+    }
+
+    >.activated {
+      color: #1890FF;
+    }
+  }
+
+  .section {
+    background-color: #FFF;
+    padding         : 24px 32px;
+    border-radius   : 2px;
+
+    .operation {
+      display : flex;
+      // color: @primary-color;
+      cursor  : pointer;
+
+      >*:not(:last-child)::after {
+        content: '|';
+        margin : 0 0.5rem;
+        color  : #E9E9E9;
+      }
+    }
+
+    .status {
+      position: relative;
+
+      &.activated {
+        &::before {
+          background-color: #5FDCC0;
+        }
+      }
+
+      &::before {
+        content         : '';
+        position        : absolute;
+        width           : 6px;
+        height          : 6px;
+        background-color: #293A4D;
+        border-radius   : 50%;
+        top             : calc(50% - 2px);
+      }
+
+      >* {
+        margin-left: 14px;
+      }
+    }
+  }
+}

@@ -15,7 +15,3 @@ RUN npm run build:test
 FROM nginx as prod
 
 COPY --from=0 /app/dist/ /usr/share/nginx/html
-
-
-
-
