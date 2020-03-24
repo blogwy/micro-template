@@ -10,7 +10,7 @@ import antd from 'ant-design-vue'
 import 'ant-design-vue/dist/antd.css'
 import './assets/style/main.less'
 
-import apiRegister from './config/api/api-rehister'
+import apiRegister from './config/api/api-register'
 
 moment.locale('zh-cn')
 Vue.prototype.$moment = moment
