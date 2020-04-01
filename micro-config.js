@@ -8,7 +8,7 @@
  * @attribute { string } main 入口文件，将在打包时自动填充
  */
 module.exports = {
-  name: 'aiot-web-crm',
+  name: '{{projectName}}',
   http: true,
   store: true,
   prefix: '/micro'

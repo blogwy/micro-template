@@ -1,3 +1,3 @@
-docker build -t registry.smartahc.com/aiot/aiot-web-xxx:dev .
+docker build -t registry.smartahc.com/aiot/{{projectName}}:dev .
 
-docker push registry.smartahc.com/aiot/aiot-web-xxx:dev
+docker push registry.smartahc.com/aiot/{{projectName}}:dev

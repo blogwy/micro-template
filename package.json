@@ -1,12 +1,12 @@
 {
-  "name": "project-name",
+  "name": "{{projectName}}",
   "version": "1.0.0",
   "private": true,
   "author": "{{projectAuthor}}",
   "description": "{{projectDescription}}",
   "scripts": {
     "dev": "vue-cli-service serve --mode development",
-    "build:dev": "cross-env NODE_ENV=production vue-cli-service build --mode dev",
+    "build:dev": "cross-env NODE_ENV=production vue-cli-service build --mode development",
     "build:alpha": "cross-env NODE_ENV=production vue-cli-service build --mode alpha",
     "build:beta": "cross-env NODE_ENV=production vue-cli-service build --mode beta",
     "build:pro": "cross-env NODE_ENV=production vue-cli-service build --mode production",
