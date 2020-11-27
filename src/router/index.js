@@ -5,9 +5,9 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/micro/home',
-    name: 'home',
-    component: () => import(/* webpackChunkName: "about" */ '../views/home.vue')
+    path: '/micro/example',
+    name: 'example',
+    component: () => import('../views/example.vue')
   }
 ]
 
