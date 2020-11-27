@@ -1,10 +1,3 @@
-variables:
-  DOCKER_TLS_CERTDIR: ""
-image: docker:git
-services:
-    - docker:dind
-
-
 build-dev:
   stage: build
   before_script:
@@ -12,8 +5,28 @@ build-dev:
   script:
     - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME" .
     - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME"
+    - ls_date=`date +'%Y-%m-%d %H:%M:%S'`
+    - p="{\"spec\":{\"template\":{\"metadata\":{\"annotations\":{\"cattle.io/timestamp\":\"${ls_date}\"}}}}}"
+    - rancher kubectl --namespace=aiot-fe-dev patch deployment {{projectName}} -p "$p"
+    - curl 'https://oapi.dingtalk.com/robot/send?access_token=ffc0e238fd0fa0a299cd99df51ccf35f5e014860affe138773c9ce88e82d25ba' -H 'Content-Type:application/json' -d '{"msgtype":"text","text":{"content":"'"$CI_PROJECT_NAME"'项目，'"$CI_COMMIT_REF_NAME"' 更新成功"}}'
+
   only:
     - dev
+
+failure:
+  script:
+    - curl 'https://oapi.dingtalk.com/robot/send?access_token=ffc0e238fd0fa0a299cd99df51ccf35f5e014860affe138773c9ce88e82d25ba' -H 'Content-Type:application/json' -d '{"msgtype":"text","text":{"content":"'"$CI_PROJECT_NAME"'项目，'"$CI_COMMIT_REF_NAME"'更新失败"}}'
+  when: on_failure
+
+enable_merge:
+  stage: test
+  script:
+    - sonar-scanner -Dsonar.projectKey=$CI_PROJECT_NAME -Dsonar.sources=. -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.login=$SONAR_TOKEN
+    - sleep 30
+    - curl http://api.dev.smartahc.com/sonarapi/sonar/?projectKey=$CI_PROJECT_NAME\&branch=$CI_COMMIT_REF_NAME
+    - if [  $(curl http://sonar.smartahc.com:9000/api/qualitygates/project_status?projectKey=$CI_PROJECT_NAME | grep -c "\"projectStatus\":{\"status\":\"ERROR\"") -gt 0 ]; then exit 1; fi
+  only:
+    - merge_requests
 
 build-tag:
   # Official docker image.
