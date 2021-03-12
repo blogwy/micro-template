@@ -10,7 +10,7 @@ RUN yarn --register=http://r.cnpmjs.org/ && yarn cache clean
 
 COPY . /app/
 
-RUN npm run build:test
+RUN npm run build:dev
 
 FROM nginx as prod
 

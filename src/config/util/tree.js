@@ -1,3 +1,8 @@
+/**
+ * @param {array} data 原始数据
+ * @param {string} childKeyName 自定义子数据的key名称
+ * @param {string} nameKey 作为控件title对应的字段
+ */
 function toTreeData(data, childKeyName = 'data', nameKey = 'org_name') {
   if(!data || !data.length) return []
 
